@@ -1,0 +1,40 @@
+<div class="jumbotron text-center">
+{{date | date:'yyyy-MM-dd HH:mm:ss a'}}
+<p>
+Ayer : {{fecha | date:'yyyy-MM-dd HH:mm:ss a'}}
+<p>
+Hoy : {{hoy | date:'yyyy-MM-dd HH:mm:ss a'}}
+<p>
+Última semana : {{ultimasemana | date:'yyyy-MM-dd HH:mm:ss a'}}
+<p>
+
+	<h1>Página Principal</h1>
+	Search: <input ng-model="query">
+	<select ng-model="orderProp">
+	  <option value="name">Alphabetical</option>
+	  <option value="age">Newest</option>
+	</select>
+	<p>{{ message }}</p>
+		<ul>
+          <li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail">
+			<input type="checkbox">
+			<p>
+            <a href="#phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+            <a href="#phones/{{phone.id}}">{{phone.name}}</a>
+            <p>{{phone.snippet}}</p>
+          </li>
+        </ul>
+</div>
+ <span>{{remaining()}} of {{todos.length}} remaining</span>
+      [ <a href="" ng-click="archive()">archive</a> ]
+      <ul class="unstyled">
+        <li ng-repeat="todo in todos">
+          <input type="checkbox" ng-model="todo.done">
+          <span class="done-{{todo.done}}">{{todo.text}}</span>
+        </li>
+      </ul>
+      <form ng-submit="addTodo()">
+        <input type="text" ng-model="todoText"  size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
